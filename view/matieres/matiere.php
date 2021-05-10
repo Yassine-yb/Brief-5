@@ -20,7 +20,7 @@
     <script src="https://kit.fontawesome.com/1fdfe2e911.js" crossorigin="anonymous"></script>
 
 
-    <title> Enseignants </title> 
+    <title> Matieres </title> 
     
     
   </head>
@@ -34,33 +34,26 @@
     <div class="col-md-3" id="myList1" role="tablist">
       <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/homeCont/index" role="tab">Home</a>
       <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/salleCont/salle" role="tab">Gestion des Salles</a>
-      <a class="list-group-item list-group-item-action active" data-toggle="list" href="http://localhost/gestion-emplois/enseignantCont/enseignant" role="tab">Gestion des Enseignants</a>
+      <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/enseignantCont/enseignant" role="tab">Gestion des Enseignants</a>
       <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/groupeCont/groupe" role="tab">Gestion des Groupes</a>
-      <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/matiereCont/matiere" role="tab">Gestion des Matieres</a>
+      <a class="list-group-item list-group-item-action active" data-toggle="list" href="http://localhost/gestion-emplois/matiereCont/matiere" role="tab">Gestion des Matieres</a>
     </div>
 
 
     <div class="col-md-8 m-sm-4 ">
-      <h1 class="text-center">Enseignants</h1>
+      <h1 class="text-center">Matieres</h1>
       <br>
 
-      <form action="http://localhost/gestion-emplois/EnseignantCont/Ajout" method="post" class="card card-body">
+      <form action="http://localhost/gestion-emplois/matiereCont/Ajout" method="post" class="card card-body">
         
         <div class="d-flex">
-          <div class="col-md-5">
-            <input type="text" name="Nom" class="form-control" placeholder="Nom">
+          <div class="col-md-6">
+            <input type="text" name="libelle" class="form-control" placeholder="Libelle">
           </div>
           <div class="col-md-1">
           </div>
-          <div class="col-md-6">
-            <input type="text" name="Email" class="form-control col-md-6" placeholder="Email">
-          </div>&nbsp;&nbsp;
-
-        </div><br>
-
-        <div class="d-flex">
-          <div class="col-md-12">
-            <input type="text" name="Password" class="form-control" placeholder="Password">
+          <div class="col-md-5">
+            <input type="text" name="enseignee" class="form-control col-md-6" placeholder="Enseignée par">
           </div>&nbsp;&nbsp;
 
         </div><br>
@@ -74,38 +67,32 @@
       <table class="table text-center ">
         <thead>
           <tr>
-            <th> IdEns </th>
-            <th> Nom </th>
-            <th> Email </th>
-            <th> Password </th>
+            <th> Id </th>
+            <th> Libelle </th>
+            <th> Enseignée par </th>
             <th> Action </th>
           </tr>
         </thead>
 
-
         <tbody>
-            
-            <?php
-            
-              foreach ($result as $enseignant){ 
-                
-            ?>
+          
+          <?php 
+            foreach ($result as $matiere){       
+          ?>
 
             <tr>
               
-                <?php if(isset($_POST["IdEns"]) && $_POST["IdEns"] ==  $enseignant ['IdEns']):  ?>
+                <?php if(isset($_POST["IdMat"]) && $_POST["IdMat"] ==  $matiere ['IdMat']): ?>
 
                 
                     
-                  <form action="http://localhost/gestion-emplois/EnseignantCont/update" method="post">
+                  <form action="http://localhost/gestion-emplois/matiereCont/update" method="post">
 
-
-                    <td> <?php echo $enseignant ['IdEns'] ?></td>
-                      <input  type="hidden" name="IdEns" value="<?= $enseignant ['IdEns'] ?>"/>  
-                    <td> <input type="text" name="Nom" value="<?= $enseignant ['Nom'] ?>"/> </td>
-                    <td> <input type="text" name="Email" value="<?= $enseignant ['Email'] ?>"/> </td>
-                    <td> <input type="text" name="Password" value="<?= $enseignant ['Password'] ?>"/> </td>
-
+                    <td> <?php echo $matiere ['IdMat']  ?></td>
+                      <input  type="hidden" name="IdMat" value="<?= $matiere ['IdMat'] ?>"/>
+                    <td> <input type="text" name="libelle" value="<?= $matiere ['Libelle'] ?>"/>  </td>
+                    <td> <input type="text" name="enseignee" value="<?= $matiere ['Enseignee'] ?>"><br></td>
+                    
                     <td>
                       <button type="submit" class="btn btn-warning" name="update" >Update</button>
                     </td>
@@ -114,27 +101,25 @@
                   
                 <?php else:  ?>
                     
-                    <td> <?php echo $enseignant ['IdEns'] ?></td>
-                    <td> <?php echo $enseignant ['Nom'] ?></td>
-                    <td> <?php echo $enseignant ['Email'] ?></td>
-                    <td> <?php echo $enseignant ['Password'] ?></td>
-
+                    <td> <?php echo $matiere ['IdMat']  ?></td>
+                    <td> <?php echo $matiere ['Libelle'] ?></td>
+                    <td> <?php echo $matiere ['Enseignee'] ?></td>
                     <td>
                       <div class="d-flex" id="action">
 
-                        <form id="update" action="http://localhost/gestion-emplois/EnseignantCont/enseignant" method="post">
-                          <input type="hidden" name="IdEns" value="<?= $enseignant ['IdEns']  ?>">
+                        <form id="update" action="http://localhost/gestion-emplois/matiereCont/matiere" method="post">
+                          <input type="hidden" name="IdMat" value="<?= $matiere ['IdMat']  ?>">
                           <button type="submit" class="btn btn-warning" name="update" >Update</button>
                         </form>&nbsp;
                         
-                        <form action="http://localhost/gestion-emplois/EnseignantCont/delete" method="post">
-                          <input type="hidden" name="IdEns" value="<?= $enseignant ['IdEns']  ?>">
+                        <form action="http://localhost/gestion-emplois/matiereCont/delete" method="post">
+                          <input type="hidden" name="IdMat" value="<?= $matiere ['IdMat']  ?>">
                           <button type="submit" class="btn btn-danger" name="submit">Delete</button>
                         </form>
 
                       </div>
                     </td>
-                 <?php endif; ?>
+                <?php endif; ?>
 
             
             </tr>
@@ -142,9 +127,7 @@
 
             <?php
             }?>
-
         </tbody>
-
       </table>
 
 

@@ -39,17 +39,7 @@ class salles{
     }
 
     //update
-    public function selectUp($idSalle){
-
-        $query = "SELECT * FROM salles WHERE id=$idSalle";
-        $newobj = new DataBase();
-        $conn = $newobj -> connect();
-        $result = $conn -> query($query);
-        return $result -> fetch (PDO::FETCH_ASSOC);
-
-    }
-
-    public function update($libelle, $capacite){
+    public function update($IdSalle,$libelle, $capacite){
 
 
         try {
@@ -60,7 +50,7 @@ class salles{
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $query = "UPDATE `salles` SET `Libelle`=$libelle,`Capacite`=$capacite WHERE id=$idSalle";
+            $query = "UPDATE `salles` SET `Libelle`='$libelle',`Capacite`=$capacite WHERE IdSalle=$IdSalle";
 
             // Prepare statement
             $stmt = $conn->prepare($query);
@@ -78,12 +68,6 @@ class salles{
         }
 
         $conn = null;
-
-        // $query = "UPDATE `salles` SET `Libelle`=$libelle,`Capacite`=$capacite WHERE id=$idSalle";
-        // $newobj = new DataBase();
-        // $conn = $newobj -> connect();
-        // $result = $conn -> query($query);
-
     }
     
 }

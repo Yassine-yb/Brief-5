@@ -36,18 +36,18 @@
 
                 <h2 class="card-heading py-3 px-5">Log In</h2>
                 
-                <form action="" method="post">
+                <form action="http://localhost/gestion-emplois/loginCont/auth" method="post">
                     <div class="row rone mx-3 my-3">
                         <div class="col-md-6">
-                            <div class="form-group"><label for="inputEmail" class="sr-only">Email</label><input type="text" class="form-control" id="inputEmail" placeholder="Email" name="username"></div>
+                            <div class="form-group"><label for="inputEmail" class="sr-only">Username</label><input type="text" class="form-control" placeholder="Email" name="username"></div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group"><label for="inputPassword" class="sr-only">Password</label><input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password"></div>
+                            <div class="form-group"><label for="inputPassword" class="sr-only">Password</label><input type="password" class="form-control" name="password" placeholder="Password"></div>
                         </div>
                     </div>
                     <div class="row rtwo mx-3">
                         <div class="col-md-6">
-                            <div class="form-group"><button type="submit" class="btn btn-primary mb-2">log In</button></div>
+                            <div class="form-group"><button type="submit" class="btn btn-primary mb-2" name="login">log In</button></div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group"><a href="#" class="forgot">Forgot your Password?</a></div>

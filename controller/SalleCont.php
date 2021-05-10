@@ -24,6 +24,7 @@ class SalleCont
 
 			$obj= new salles();
 			$result = $obj -> Ajout($libelle, $capacite);
+			
 			header ("location:http://localhost/gestion-emplois/salleCont/salle");
 		}
 	}
@@ -43,13 +44,17 @@ class SalleCont
 	function update(){
 
 	
-		if (isset ($_POST ['update'])){
-			
+		if (isset($_POST ['update'])){
+		
+			// print_r($_POST);
+
+			$IdSalle=$_POST ['IdSalle'];
 			$libelle=$_POST ['libelle'];
 			$capacite=$_POST ['capacite'];
+			
 
 			$obj= new salles();
-			$result = $obj -> update ($libelle, $capacite);
+			$result = $obj -> update ($IdSalle,$libelle, $capacite);
 			header ("location:http://localhost/gestion-emplois/salleCont/salle");
 		}
 		

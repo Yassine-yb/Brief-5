@@ -74,39 +74,60 @@
           </tr>
         </thead>
 
-
-        <?php
-
-        foreach ($result as $salle){ ?>
-
-          <tbody>
+        <tbody>
           
-            <td> <?php echo $salle ['IdSalle'] ?></td>
-            <td> <?php echo $salle ['Libelle'] ?></td>
-            <td> <?php echo $salle ['Capacite'] ?></td>
+          <?php 
+            foreach ($result as $salle){       
+          ?>
 
+            <tr>
+              
+                <?php if(isset($_POST["IdSalle"]) && $_POST["IdSalle"] ==  $salle ['IdSalle']): ?>
 
-            <td>
-              <div class="d-flex">
-
-                <form action="http://localhost/gestion-emplois/salleCont/update" method="post">
-                  <input type="text" name="updateID" id="updateS" value="<?= $salle ['Libelle'],['Capacite']  ?>" hidden>
-                  <button class="btn btn-warning" name="update" onclick="update()">Update</button>
-                </form>&nbsp;
                 
-                <form action="http://localhost/gestion-emplois/salleCont/delete" method="post">
-                  <input type="hidden" name="IdSalle" value="<?= $salle ['IdSalle']  ?>">
-                  <button type="submit" class="btn btn-danger" name="submit">Delete</button>
-                </form>
+                    
+                  <form action="http://localhost/gestion-emplois/salleCont/update" method="post">
 
-              </div>
-            </td>
+                    <td> <?php echo $salle ['IdSalle']  ?></td>
+                      <input  type="hidden" name="IdSalle" value="<?= $salle ['IdSalle'] ?>"/>
+                    <td> <input type="text" name="libelle" value="<?= $salle ['Libelle'] ?>"/>  </td>
+                    <td> <input type="text" name="capacite" value="<?= $salle ['Capacite'] ?>"><br></td>
+                    
+                    <td>
+                      <button type="submit" class="btn btn-warning" name="update" >Update</button>
+                    </td>
+                  </form>
+                  
+                  
+                <?php else:  ?>
+                    
+                    <td> <?php echo $salle ['IdSalle']  ?></td>
+                    <td> <?php echo $salle ['Libelle'] ?></td>
+                    <td> <?php echo $salle ['Capacite'] ?></td>
+                    <td>
+                      <div class="d-flex" id="action">
 
-          </tbody>
+                        <form id="update" action="http://localhost/gestion-emplois/salleCont/salle" method="post">
+                          <input type="hidden" name="IdSalle" value="<?= $salle ['IdSalle']  ?>">
+                          <button type="submit" class="btn btn-warning" name="update" >Update</button>
+                        </form>&nbsp;
+                        
+                        <form action="http://localhost/gestion-emplois/salleCont/delete" method="post">
+                          <input type="hidden" name="IdSalle" value="<?= $salle ['IdSalle']  ?>">
+                          <button type="submit" class="btn btn-danger" name="submit">Delete</button>
+                        </form>
 
-        <?php
-        }?>
-        
+                      </div>
+                    </td>
+                <?php endif; ?>
+
+            
+            </tr>
+              
+
+            <?php
+            }?>
+        </tbody>
       </table>
 
 

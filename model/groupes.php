@@ -4,13 +4,13 @@ include_once __DIR__.'/../controller/HomeCont.php';
 
 require 'conn.php';
 
-class enseignants{
+class groupes{
 
 
     //select
     public function select(){
 
-        $query = "SELECT * FROM enseignants ORDER BY IdEns ASC";
+        $query = "SELECT * FROM groupes ORDER BY idGrp ASC";
         $newobj = new DataBase();
         $conn = $newobj -> connect();
         $result = $conn -> query($query);
@@ -19,9 +19,9 @@ class enseignants{
     }
 
     //ajouter
-    public function Ajout($Nom, $Email, $Password){
+    public function Ajout($libelle, $effectif){
 
-        $query = "INSERT INTO `enseignants`(`Nom`, `Email`, `Password`) VALUES ('$Nom','$Email','$Password')";
+        $query = "INSERT INTO `groupes` (`Libelle`, `Effectif`) VALUES ('$libelle','$effectif')";
         $newobj = new DataBase();
         $conn = $newobj -> connect();
         $result = $conn -> query($query);
@@ -29,18 +29,17 @@ class enseignants{
     }
 
     //delete
-    public function delete($IdEns){
+    public function delete($idGrp){
 
-        $query = "DELETE FROM `enseignants` WHERE IdEns=$IdEns";
+        $query = "DELETE FROM `groupes` WHERE idGrp=$idGrp";
         $newobj = new DataBase();
         $conn = $newobj -> connect();
         $result = $conn -> query($query);
 
     }
 
-    
     //update
-    public function update($IdEns, $Nom, $Email, $Password){
+    public function update($IdGrp,$libelle, $effectif){
 
 
         try {
@@ -51,7 +50,7 @@ class enseignants{
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $query = "UPDATE `enseignants` SET `Nom`='$Nom',`Email`='$Email', `Password`='$Password'  WHERE IdEns=$IdEns";
+            $query = "UPDATE `groupes` SET `Libelle`='$libelle',`Effectif`=$effectif WHERE IdGrp=$IdGrp";
 
             // Prepare statement
             $stmt = $conn->prepare($query);
@@ -70,7 +69,19 @@ class enseignants{
 
         $conn = null;
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

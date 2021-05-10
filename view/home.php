@@ -21,7 +21,7 @@
     <script src="https://kit.fontawesome.com/1fdfe2e911.js" crossorigin="anonymous"></script>
 
 
-    <title> Acceuil </title> 
+    <title> Espace Admin </title> 
     
     
   </head>
@@ -31,7 +31,7 @@
 
     <div class="row">
 
-        <h2 class="card-heading py-3 px-5">Acceuil</h2>
+        <h2 class="card-heading py-3 px-5">Espace Admin</h2>
         
         <div class="col-4">
 
