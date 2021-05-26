@@ -31,7 +31,17 @@
 
     <div class="row">
 
-        <h2 class="card-heading py-3 px-5">Espace Admin</h2>
+    
+        <div class="d-flex justify-content-between">
+          <h2 class="card-heading py-3 px-5">Espace Admin</h2>
+          <div class="col-md-2">
+            <form action="http://localhost/gestion-emplois/loginCont/logout" method="post">
+              <button type="submit" id="lg_home" class="btn btn-primary mb-2" name="logout">log Out</button>
+            </form>
+          </div>
+        </div>
+
+ 
         
         <div class="col-4">
 
@@ -43,11 +53,6 @@
                 <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/groupeCont/groupe" role="tab">Gestion des Groupes</a>
                 <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/matiereCont/matiere" role="tab">Gestion des Matieres</a>
             </div>
-
-            <!-- Tab panes -->
-            <!-- <div class="tab-content">
-              <div class="tab-pane active" id="home" role="tabpanel">School Management System</div>
-            </div> -->
 
         </div>
 

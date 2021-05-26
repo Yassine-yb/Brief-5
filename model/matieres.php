@@ -2,21 +2,46 @@
 include_once __DIR__.'/../DataBase/DataBase.php';
 include_once __DIR__.'/../controller/HomeCont.php';
 
-require 'conn.php';
+include_once 'conn.php';
 
 class matieres{
+    // ORDER BY IdMat ASC
 
 
     //select
     public function select(){
 
-        $query = "SELECT * FROM matieres ORDER BY IdMat ASC";
+        $query1 = "SELECT * FROM matieres ORDER BY IdMat ASC";
+
+        $query = "SELECT m.IdMat  , m.Libelle , e.Nom FROM `matieres` m ,`enseignants`e  WHERE m.Enseignee= e.IdEns  ";
+        
+        
+
         $newobj = new DataBase();
         $conn = $newobj -> connect();
+        
         $result = $conn -> query($query);
+        $result = $conn -> query($query1);
+        
+        
+        return $result -> fetchAll (PDO::FETCH_ASSOC);
+        return $result1 -> fetchAll (PDO::FETCH_ASSOC);
+        
+       
+
+    }
+
+    public function getEns(){
+
+        $query1 = "SELECT * FROM enseignants";
+        $newobj = new DataBase();
+        $conn = $newobj -> connect();
+        $result = $conn -> query($query1);
+        
         return $result -> fetchAll (PDO::FETCH_ASSOC);
 
     }
+
 
     //ajouter
     public function Ajout($libelle, $enseignee){

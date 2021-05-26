@@ -2,7 +2,7 @@
 include_once __DIR__.'/../DataBase/DataBase.php';
 include_once __DIR__.'/../controller/HomeCont.php';
 
-require 'conn.php';
+include_once 'conn.php';
 
 class groupes{
 

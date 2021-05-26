@@ -41,7 +41,15 @@
 
 
     <div class="col-md-8 m-sm-4 ">
-      <h1 class="text-center">Enseignants</h1>
+      
+      <div class="d-flex justify-content-between">
+        <h1 class="text-center">Enseignants</h1>
+        <div class="col-md-2">
+          <form action="http://localhost/gestion-emplois/loginCont/logout" method="post">
+            <button type="submit" class="btn btn-primary mb-2" name="logout">log Out</button>
+          </form>
+        </div>
+      </div>
       <br>
 
       <form action="http://localhost/gestion-emplois/EnseignantCont/Ajout" method="post" class="card card-body">
@@ -59,8 +67,13 @@
         </div><br>
 
         <div class="d-flex">
-          <div class="col-md-12">
+          <div class="col-md-5">
             <input type="text" name="Password" class="form-control" placeholder="Password">
+          </div>
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-6">
+            <input type="text" name="Matiere" class="form-control" placeholder="Matiere">
           </div>&nbsp;&nbsp;
 
         </div><br>
@@ -78,6 +91,7 @@
             <th> Nom </th>
             <th> Email </th>
             <th> Password </th>
+            <th> Matiere </th>
             <th> Action </th>
           </tr>
         </thead>
@@ -105,6 +119,7 @@
                     <td> <input type="text" name="Nom" value="<?= $enseignant ['Nom'] ?>"/> </td>
                     <td> <input type="text" name="Email" value="<?= $enseignant ['Email'] ?>"/> </td>
                     <td> <input type="text" name="Password" value="<?= $enseignant ['Password'] ?>"/> </td>
+                    <td> <input type="text" name="Matiere" value="<?= $enseignant ['Matiere'] ?>"/> </td>
 
                     <td>
                       <button type="submit" class="btn btn-warning" name="update" >Update</button>
@@ -118,9 +133,10 @@
                     <td> <?php echo $enseignant ['Nom'] ?></td>
                     <td> <?php echo $enseignant ['Email'] ?></td>
                     <td> <?php echo $enseignant ['Password'] ?></td>
+                    <td> <?php echo $enseignant ['Matiere'] ?></td>
 
                     <td>
-                      <div class="d-flex" id="action">
+                      <div class="d-flex justify-content-end" id="action">
 
                         <form id="update" action="http://localhost/gestion-emplois/EnseignantCont/enseignant" method="post">
                           <input type="hidden" name="IdEns" value="<?= $enseignant ['IdEns']  ?>">

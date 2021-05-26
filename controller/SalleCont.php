@@ -17,6 +17,7 @@ class SalleCont
 
 	function Ajout(){
 		
+		$i = 0;
 		if (isset ($_POST ['submit'])){
 
 			$libelle=$_POST ['libelle'];
@@ -24,6 +25,12 @@ class SalleCont
 
 			$obj= new salles();
 			$result = $obj -> Ajout($libelle, $capacite);
+
+			while(isset($_POST['Libelle'.$i])){
+				$salle = new Salles();
+				$salle->Ajout($_POST['Libelle'.$i],$_POST['capacite'.$i]);
+				$i++;
+			}
 			
 			header ("location:http://localhost/gestion-emplois/salleCont/salle");
 		}

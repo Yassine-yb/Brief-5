@@ -27,37 +27,56 @@
     
   </head>
 
-  <body>
+  <body class="lg">
 
 
     <div class="container d-flex justify-content-center">
+
+
         <div class="card mx-5 my-5">
             <div class="card-body py-2 px-2">
+                <h2 class="card-heading py-3 px-5">Log In</h2>  
 
-                <h2 class="card-heading py-3 px-5">Log In</h2>
-                
-                <form action="http://localhost/gestion-emplois/loginCont/auth" method="post">
-                    <div class="row rone mx-3 my-3">
-                        <div class="col-md-6">
-                            <div class="form-group"><label for="inputEmail" class="sr-only">Username</label><input type="text" class="form-control" placeholder="Email" name="username"></div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group"><label for="inputPassword" class="sr-only">Password</label><input type="password" class="form-control" name="password" placeholder="Password"></div>
-                        </div>
-                    </div>
-                    <div class="row rtwo mx-3">
-                        <div class="col-md-6">
-                            <div class="form-group"><button type="submit" class="btn btn-primary mb-2" name="login">log In</button></div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group"><a href="#" class="forgot">Forgot your Password?</a></div>
-                        </div>
-                    </div>
-                </form>
+                <div class="d-flex justify-content-center">
 
+                    <form action="http://localhost/gestion-emplois/loginCont/auth" method="post">
+
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" placeholder="Enter username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+                        </div>
+                        
+                        <div class="form-group row align-items-center">
+                            <div class="col-md-6">
+                                <div class="form-group"><button type="submit" class="btn btn-primary mb-2" name="login">log In</button></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group"><a href="http://localhost/gestion-emplois/signupCont/index" class="forgot">Create new account</a></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
+
+                    </form>
+
+                    <div class="col-md-4">
+                        <img class="img-fluid" src="http://localhost/gestion-emplois/public/images/login.svg">
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
+
+
 
 
 

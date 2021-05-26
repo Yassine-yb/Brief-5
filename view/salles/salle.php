@@ -30,6 +30,7 @@
 
   <div class="d-flex">
 
+  
 
     <div class="col-md-3" id="myList1" role="tablist">
       <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/homeCont/index" role="tab">Home</a>
@@ -39,29 +40,47 @@
       <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/matiereCont/matiere" role="tab">Gestion des Matieres</a>
     </div>
 
-
-    <div class="col-md-8 m-sm-4 ">
-      <h1 class="text-center">Salles</h1>
+    
+    
+      <div class="col-md-8 m-sm-4 ">
+        <div class="d-flex justify-content-between">
+          <h1 class="text-center">Salles</h1>
+          <div class="col-md-2">
+              <form action="http://localhost/gestion-emplois/loginCont/logout" method="post">
+                <button type="submit" class="btn btn-primary mb-2" name="logout">log Out</button>
+              </form>
+          </div>
+        </div>
       <br>
 
-      <form action="http://localhost/gestion-emplois/salleCont/Ajout" method="post" class="card card-body">
+      <form action="http://localhost/gestion-emplois/salleCont/Ajout" id="idForm" method="post" class="card card-body">
         
         <div class="d-flex">
-          <div class="col-md-6">
-            <input type="text" name="libelle" class="form-control" placeholder="Libelle">
+          <div class="col-md-5">
+            <input type="text" name="libelle" class="form-control" id="Libelle"  placeholder="Libelle">
           </div>
           <div class="col-md-1">
           </div>
           <div class="col-md-5">
-            <input type="text" name="capacite" class="form-control col-md-6" placeholder="Capacite">
-          </div>&nbsp;&nbsp;
+            <input type="text" name="capacite" class="form-control col-md-6" id="capacite" placeholder="Capacite">
+          </div>
+
+          <button onclick="add()" type="button" id="add_btn" class="btn btn-primary "><i
+              class="material-icons">add</i>
+          </button>
+          &nbsp;&nbsp;
 
         </div><br>
 
         <div class="col text-center">
           <input class="btn btn-primary  col-md-3" name="submit" type="submit" value="Submit">
         </div>
-      </form><br>
+
+      </form>
+      <br>
+
+      
+      <br>
 
 
       <table class="table text-center ">
@@ -86,7 +105,7 @@
 
                 
                     
-                  <form action="http://localhost/gestion-emplois/salleCont/update" method="post">
+                  <form action="http://localhost/gestion-emplois/salleCont/update" id="idForm"  method="post">
 
                     <td> <?php echo $salle ['IdSalle']  ?></td>
                       <input  type="hidden" name="IdSalle" value="<?= $salle ['IdSalle'] ?>"/>
@@ -105,7 +124,7 @@
                     <td> <?php echo $salle ['Libelle'] ?></td>
                     <td> <?php echo $salle ['Capacite'] ?></td>
                     <td>
-                      <div class="d-flex" id="action">
+                      <div class="d-flex justify-content-end" id="action">
 
                         <form id="update" action="http://localhost/gestion-emplois/salleCont/salle" method="post">
                           <input type="hidden" name="IdSalle" value="<?= $salle ['IdSalle']  ?>">
@@ -138,9 +157,35 @@
 
 
   <!-- JS & JQuery -->
-  <script src="../public/js/bootstrap.min.js"></script>
-  <script src="../public/js/jquery.min.js"></script>
-  <script src="../public/js/all.js"></script>
+  <script src="http://localhost/gestion-emplois/public/js/bootstrap.min.js"></script>
+  <script src="http://localhost/gestion-emplois/public/js/jquery.min.js"></script>
+  <script src="http://localhost/gestion-emplois/public/js/all.js"></script>
 
 </body>
+
+<script>
+  var i = 0;
+
+  function add() {
+      var idForm = document.getElementById('idForm');
+      var Libelle = document.getElementById('Libelle').value;
+      var capacite = document.getElementById('capacite').value;
+
+      if (Libelle != '' && capacite != '') {
+
+        idForm.innerHTML += 
+        '<br><div class="d-flex"><div class="col-md-5"> <input type="text" name="Libelle' + i +
+         '" class="form-control" value="' + Libelle + 
+         '" placeholder="Libelle"> </div> <div class="col-md-1"></div> <div class="col-md-5"> <input type="number" name="capacite' + i +
+         '" value="' + capacite + '" class="form-control col-md-6" placeholder="capacite"></div></div>';
+
+
+        i++;
+
+      } else {
+        alert("please enter your data !!");
+      }
+  }
+</script>
+
 </html>

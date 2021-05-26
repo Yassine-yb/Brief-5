@@ -41,7 +41,15 @@
 
 
     <div class="col-md-8 m-sm-4 ">
-      <h1 class="text-center">Groupes</h1>
+      
+      <div class="d-flex justify-content-between">
+        <h1 class="text-center">Groupes</h1>
+        <div class="col-md-2">
+          <form action="http://localhost/gestion-emplois/loginCont/logout" method="post">
+            <button type="submit" class="btn btn-primary mb-2" name="logout">log Out</button>
+          </form>
+        </div>
+      </div>
       <br>
 
       <form action="http://localhost/gestion-emplois/groupeCont/Ajout" method="post" class="card card-body">
@@ -105,7 +113,7 @@
                     <td> <?php echo $groupe ['Libelle'] ?></td>
                     <td> <?php echo $groupe ['Effectif'] ?></td>
                     <td>
-                      <div class="d-flex" id="action">
+                      <div class="d-flex justify-content-end" id="action">
 
                         <form id="update" action="http://localhost/gestion-emplois/groupeCont/groupe" method="post">
                           <input type="hidden" name="IdGrp" value="<?= $groupe ['IdGrp']  ?>">

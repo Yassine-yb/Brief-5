@@ -10,7 +10,10 @@ class MatiereCont
 	function matiere(){
 
 		$obj= new matieres();
-		$result = $obj -> select();
+		$result = $obj-> select();
+		
+		$ens= $obj-> getEns();
+
 		require_once __DIR__.'/../view/matieres/matiere.php';
 	}
 

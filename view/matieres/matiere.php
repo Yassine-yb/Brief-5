@@ -41,7 +41,15 @@
 
 
     <div class="col-md-8 m-sm-4 ">
-      <h1 class="text-center">Matieres</h1>
+      
+      <div class="d-flex justify-content-between">
+        <h1 class="text-center">Matieres</h1>
+        <div class="col-md-2">
+          <form action="http://localhost/gestion-emplois/loginCont/logout" method="post">
+            <button type="submit" class="btn btn-primary mb-2" name="logout">log Out</button>
+          </form>
+        </div>
+      </div>
       <br>
 
       <form action="http://localhost/gestion-emplois/matiereCont/Ajout" method="post" class="card card-body">
@@ -53,10 +61,23 @@
           <div class="col-md-1">
           </div>
           <div class="col-md-5">
-            <input type="text" name="enseignee" class="form-control col-md-6" placeholder="Enseignée par">
+     
+          <select name="enseignee" class="form-control custom-select custom-select-lg">
+            <option selected>Enseignee par...</option>
+            <option value="Enseignee par">
+              <?php
+                foreach ($ens as $en)
+                echo "<option value='".$en['IdEns']. "'>" . $en['Nom'] . "</option>";
+              ?>
+            </option>
+          </select>  
+
+
           </div>&nbsp;&nbsp;
 
         </div><br>
+        
+        
 
         <div class="col text-center">
           <input class="btn btn-primary  col-md-3" name="submit" type="submit" value="Submit">
@@ -91,10 +112,21 @@
                     <td> <?php echo $matiere ['IdMat']  ?></td>
                       <input  type="hidden" name="IdMat" value="<?= $matiere ['IdMat'] ?>"/>
                     <td> <input type="text" name="libelle" value="<?= $matiere ['Libelle'] ?>"/>  </td>
-                    <td> <input type="text" name="enseignee" value="<?= $matiere ['Enseignee'] ?>"><br></td>
-                    
-                    <td>
-                      <button type="submit" class="btn btn-warning" name="update" >Update</button>
+                    <td> 
+                      <select name="enseignee" class="custom-select-lg">
+                        <option selected>Enseignée par...</option>
+                        <option value="Enseignee par">
+                          <?php
+                            foreach ($ens as $en)
+                            echo "<option value='".$en['IdEns']. "'>" . $en['Nom'] . "</option>";
+                          ?>
+                        </option>
+                      </select> 
+                      
+                      <td>
+                        <button type="submit" class="btn btn-warning" name="update" >Update</button>
+                      </td>
+                      
                     </td>
                   </form>
                   
@@ -105,7 +137,7 @@
                     <td> <?php echo $matiere ['Libelle'] ?></td>
                     <td> <?php echo $matiere ['Enseignee'] ?></td>
                     <td>
-                      <div class="d-flex" id="action">
+                      <div class="d-flex justify-content-end" id="action">
 
                         <form id="update" action="http://localhost/gestion-emplois/matiereCont/matiere" method="post">
                           <input type="hidden" name="IdMat" value="<?= $matiere ['IdMat']  ?>">

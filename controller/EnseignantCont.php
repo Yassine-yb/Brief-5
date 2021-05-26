@@ -8,15 +8,10 @@ class EnseignantCont{
 
 	function enseignant(){
 
-	// 	if(isset( $_SESSION['enseignant']) &&  !empty($_SESSION['enseignant'])){
-
 		$obj= new enseignants();
 		$result = $obj -> select();
 		require_once __DIR__.'/../view/enseignants/enseignant.php';
 
-	// }else{
-    //     header("location:http://localhost/gestion-emplois/loginCont/auth");
-    // }
 	}
 	
 
@@ -28,9 +23,14 @@ class EnseignantCont{
 			$Nom=$_POST ['Nom'];
 			$Email=$_POST ['Email'];
             $Password=$_POST ['Password'];
+			$Matiere=$_POST ['Matiere'];
 
 			$obj= new enseignants();
-			$result = $obj -> Ajout($Nom, $Email, $Password);
+			$mat= $obj-> getMat();
+
+
+			$result = $obj -> Ajout($Nom, $Email, $Password, $Matiere);
+
 			header ("location:http://localhost/gestion-emplois/EnseignantCont/enseignant");
 		}
 	}
@@ -42,7 +42,9 @@ class EnseignantCont{
 			$IdEns=$_POST ['IdEns'];
 
 			$obj= new enseignants();
+
 			$result = $obj -> delete ($IdEns);
+
 			header ("location:http://localhost/gestion-emplois/EnseignantCont/enseignant");
 		}
 	}
@@ -52,13 +54,18 @@ class EnseignantCont{
 	
 		if (isset ($_POST ['update'])){
 			
+
 			$IdEns=$_POST ['IdEns'];
 			$Nom=$_POST ['Nom'];
 			$Email=$_POST ['Email'];
             $Password=$_POST ['Password'];
+			$Matiere=$_POST ['Matiere'];
+
 
 			$obj= new enseignants();
-			$result = $obj -> update ($IdEns, $Nom, $Email, $Password);
+
+			$result = $obj -> update ($IdEns, $Nom, $Email, $Password, $Matiere);
+
 			header ("location:http://localhost/gestion-emplois/EnseignantCont/enseignant");
 		}
 		
