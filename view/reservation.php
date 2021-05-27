@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="http://localhost/gestion-emplois/public/css/style.css"/>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://localhost/gestion-emplois/public/css/bootstrap.min.css"/>
+    <i class="bi bi-bookmark-check-fill"></i>
 
 
     <!-- Font -->
@@ -23,6 +24,8 @@
 <body>
 
 
+
+
 <div class="row">
 
 <div class="d-flex justify-content-between">
@@ -31,21 +34,25 @@
   <div class="col-md-2">
 
     <form action="http://localhost/gestion-emplois/loginCont/logout" method="post">
-      <button type="submit" id="lg_home" class="btn btn-primary mb-2" name="logout">log Out</button>
+      <button type="submit" id="lg_home" class="btn btn-danger mb-2" name="logout">log Out</button>
     </form>
-    
+
   </div>
 
 </div>
 
 
-<div class="col-4">
+<div class="d-flex justify-content-around">
 
   <!-- List group -->       
-    <div class="list-group" id="myList" role="tablist">
+    <div class="col-md-3 list-group" id="myList" role="tablist">
         <a class="list-group-item list-group-item-action active" data-toggle="list" href="http://localhost/gestion-emplois/reservationCont/index" role="tab">Home</a>
         <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/ReservationCont/reservation" role="tab">Reseravation des Salles</a>
         
+    </div>
+
+    <div class="col-md-4">
+      <img id="ens_img" class="img-fluid" src="http://localhost/gestion-emplois/public/images/teacher.jpg">
     </div>
 
 

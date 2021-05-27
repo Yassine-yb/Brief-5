@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="http://localhost/gestion-emplois/public/css/style.css"/>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://localhost/gestion-emplois/public/css/bootstrap.min.css"/>
+    <i class="bi bi-bookmark-check-fill"></i>
 
 
     <!-- Font -->
@@ -36,22 +37,26 @@
           <h2 class="card-heading py-3 px-5">Espace Admin</h2>
           <div class="col-md-2">
             <form action="http://localhost/gestion-emplois/loginCont/logout" method="post">
-              <button type="submit" id="lg_home" class="btn btn-primary mb-2" name="logout">log Out</button>
+              <button type="submit" id="lg_home" class="btn btn-danger mb-2" name="logout">log Out</button>
             </form>
           </div>
         </div>
 
  
         
-        <div class="col-4">
+        <div class="d-flex justify-content-around">
 
           <!-- List group -->
-            <div class="list-group" id="myList" role="tablist">
+            <div class="col-md-3 list-group" id="myList" role="tablist">
                 <a class="list-group-item list-group-item-action active" data-toggle="list" href="http://localhost/gestion-emplois/homeCont/index" role="tab">Home</a>
                 <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/salleCont/salle" role="tab">Gestion des Salles</a>
                 <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/enseignantCont/enseignant" role="tab">Gestion des Enseignants</a>
                 <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/groupeCont/groupe" role="tab">Gestion des Groupes</a>
                 <a class="list-group-item list-group-item-action" data-toggle="list" href="http://localhost/gestion-emplois/matiereCont/matiere" role="tab">Gestion des Matieres</a>
+            </div>
+
+            <div class="col-md-6">
+              <img id="ges_img" class="img-fluid" src="http://localhost/gestion-emplois/public/images/gestion.jpg">
             </div>
 
         </div>

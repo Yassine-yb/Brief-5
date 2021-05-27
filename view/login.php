@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="http://localhost/gestion-emplois/public/css/style.css"/>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="http://localhost/gestion-emplois/public/css/bootstrap.min.css"/>
+    <i class="bi bi-bookmark-check-fill"></i>
 
 
 

@@ -21,15 +21,6 @@ include_once 'conn.php';
             
         }
 
-        // public function select(){    
-    
-        //     $query = "SELECT * FROM cours ORDER BY IdCours ASC";
-        //     $newobj = new DataBase();
-        //     $conn = $newobj -> connect();
-        //     $result = $conn -> query($query);
-        //     return $result -> fetchAll (PDO::FETCH_ASSOC);
-    
-        // }
         public function getCours(){
 
             $query1 = "SELECT * FROM cours ORDER BY IdCours ASC";
@@ -53,6 +44,7 @@ include_once 'conn.php';
 
         //delete
         public function delete($idCours){
+            
 
             $query = "DELETE FROM `cours` WHERE idCours=$idCours";
             $newobj = new DataBase();
