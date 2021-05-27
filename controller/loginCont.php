@@ -33,7 +33,7 @@ class LoginCont{
                 $role = $_SESSION['Role']=$result[0]['Role'];
     
                 if ($role != "Admin") {        
-                    header("location:http://localhost/gestion-emplois/ResSalleCont/salleRes");
+                    header("location:http://localhost/gestion-emplois/ReservationCont/index");
                 } else {
                     header("location:http://localhost/gestion-emplois/homeCont");
                 }

@@ -2,7 +2,7 @@
 
 include_once __DIR__.'/../DataBase/DataBase.php';
 include_once __DIR__.'/../controller/ReservationCont.php';
-include_once __DIR__.'/../model/groupes.php';
+include_once __DIR__.'/../model/reservations.php';
 
 include_once 'conn.php';
 
@@ -10,33 +10,10 @@ include_once 'conn.php';
     
     class Reservations{
 
-        // select groupe
-        function selectgroupe(){
-
-            $query = "SELECT * FROM groupes ORDER BY IdGrp ASC";
-            $newobj = new DataBase();
-            $conn = $newobj -> connect();
-            $result = $conn -> query($query);
-            return $result -> fetchAll (PDO::FETCH_ASSOC);
-        }
-
-
-
-        //select enseignant
-        function selectenseignant(){
-
-            $query = "SELECT * FROM enseignats ORDER BY IdEns ASC";
-            $newobj = new DataBase();
-            $conn = $newobj -> connect();
-            $result = $conn -> query($query);
-            return $result -> fetchAll (PDO::FETCH_ASSOC);
-
-        }
-
         //select salle
         function selectsalle(){
 
-            $query = "SELECT * FROM salles ORDER BY IdGrp ASC";
+            $query = "SELECT * FROM salles ";
             $newobj = new DataBase();
             $conn = $newobj -> connect();
             $result = $conn -> query($query);
@@ -44,85 +21,46 @@ include_once 'conn.php';
             
         }
 
-        //insert
-        function insert($date,$duree,$idEns,$idGrp,$idSalle){
+        // public function select(){    
+    
+        //     $query = "SELECT * FROM cours ORDER BY IdCours ASC";
+        //     $newobj = new DataBase();
+        //     $conn = $newobj -> connect();
+        //     $result = $conn -> query($query);
+        //     return $result -> fetchAll (PDO::FETCH_ASSOC);
+    
+        // }
+        public function getCours(){
 
-            $query = "SELECT * FROM cours WHERE date='$date' AND duree='$duree' AND IdEns=$idEns";
+            $query1 = "SELECT * FROM cours ORDER BY IdCours ASC";
             $newobj = new DataBase();
             $conn = $newobj -> connect();
-            $result = $conn->query($query)->fetchAll();
-            // return $result -> fetchAll (PDO::FETCH_ASSOC);
+            $result = $conn -> query($query1);
 
-            if(!empty($result)){
-                //ens non dispo
-                  return -3;
-
-            }else{
-
-                $query = "SELECT * FROM cours where date='$date' and duree ='$duree' and IdGrp=$idGrp ";
-                $result= $conn->query($query)->fetchAll();
-
-                if(!empty($result)){
-                    //group non dispo
-                      return -2;
-
-                }else{
-
-                    $query = "SELECT * FROM cours WHERE date='$date' and duree ='$duree' and IdSalle = $idSalle ";
-                    $result= $conn->query($query)->fetchAll();
-
-                    if(!empty($result)){
-                        //salle non dispo
-                          return -1;
-
-                    }else{
-
-                        $grp=new GroupeModel();
-                        $group=$grp->getone($idGrp);
-                        $query2="select * from salle where id=$idS and  capacite >=".$group[0]['Effectif'];
-                        $result= $conn->query($query2)->fetchAll();
-
-                        if(empty($result)){
-                            return 0;
-
-                        }else{
-
-                            $query="INSERT INTO `cours`(`date`,`duree`,`IdEns`,`IdGrp`,`IdSalle`) VALUES ('$date','$duree',$idEns,$idGrp,$idSalle)";
-                            $result= $conn->query($query);
-                            // die(print_r($query));
-                            return 1;
-                        }
-            
-                    }
-                }
-            }
-         
-        
-           
-              
+            return $result -> fetchAll (PDO::FETCH_ASSOC);
+    
         }
 
-        //select
-        function select(){
+        public function Ajout ($date, $capacite, $heure, $salle){
 
-            $query ="SELECT Salles.Libelle, Groupes.Libelle, user.name,cours.date,cours.duree,cours.id FROM `cours`,`groupes`,`salles`,`users` WHERE cours.idSalle=salle.id AND cours.idGrp=group.id AND cours.idEns=user.id";
+            $query = "INSERT INTO `cours`(`Date`, `Capacite`, `Heure`, `Salle`) VALUES ('$date', '$capacite', '$heure','$salle')";
             $newobj = new DataBase();
             $conn = $newobj -> connect();
             $result = $conn -> query($query);
-            return $result -> fetchAll (PDO::FETCH_ASSOC);
 
         }
 
-        
+
         //delete
-        function Delete($id){
+        public function delete($idCours){
 
-            $query = "DELETE FROM cours WHERE id=$id";
+            $query = "DELETE FROM `cours` WHERE idCours=$idCours";
             $newobj = new DataBase();
             $conn = $newobj -> connect();
             $result = $conn -> query($query);
-            return $result -> fetchAll (PDO::FETCH_ASSOC);
-            
+
         }
+
+
 
     }

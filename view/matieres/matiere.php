@@ -63,13 +63,15 @@
           <div class="col-md-5">
      
           <select name="enseignee" class="form-control custom-select custom-select-lg">
-            <option selected>Enseignee par...</option>
-            <option value="Enseignee par">
-              <?php
-                foreach ($ens as $en)
-                echo "<option value='".$en['IdEns']. "'>" . $en['Nom'] . "</option>";
-              ?>
+
+            <option value="0" disabled selected>
+              Enseignée par...
             </option>
+
+            <?php foreach($ens as $en): ?>
+              <option value="<?= $en["Nom"] ?>"><?= $en["Nom"] ?></option>
+            <?php endforeach; ?>
+
           </select>  
 
 
@@ -114,13 +116,14 @@
                     <td> <input type="text" name="libelle" value="<?= $matiere ['Libelle'] ?>"/>  </td>
                     <td> 
                       <select name="enseignee" class="custom-select-lg">
-                        <option selected>Enseignée par...</option>
-                        <option value="Enseignee par">
-                          <?php
-                            foreach ($ens as $en)
-                            echo "<option value='".$en['IdEns']. "'>" . $en['Nom'] . "</option>";
-                          ?>
+                        <option value="0" disabled selected>
+                          Enseignée par...
                         </option>
+
+                        <?php foreach($ens as $en): ?>
+                          <option value="<?= $en["Nom"] ?>"><?= $en["Nom"] ?></option>
+                        <?php endforeach; ?>
+
                       </select> 
                       
                       <td>

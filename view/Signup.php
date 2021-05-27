@@ -48,7 +48,7 @@
                                 <option value="Matiere">
                                     <?php
                                         foreach ($result as $matiere)
-                                        echo "<option value='".$matiere['IdMat']. "'>" . $matiere['Libelle'] . "</option>";
+                                        echo "<option value='".$matiere['Libelle']. "'>" . $matiere['Libelle'] . "</option>";
                                     ?>
                                 </option>
                             </select>
