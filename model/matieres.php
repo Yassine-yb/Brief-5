@@ -25,7 +25,7 @@ class matieres{
         
         
         return $result -> fetchAll (PDO::FETCH_ASSOC);
-        return $result1 -> fetchAll (PDO::FETCH_ASSOC);
+        return $result -> fetchAll (PDO::FETCH_ASSOC);
         
        
 

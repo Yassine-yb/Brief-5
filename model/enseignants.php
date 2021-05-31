@@ -9,7 +9,6 @@ class enseignants{
     function enseignants(){
 		
 		$obj= new enseignants();
-        // $obj1= new enseignants();
         require_once __DIR__.'/../view/enseignant.php';
 
     }
@@ -19,7 +18,6 @@ class enseignants{
     public function select(){
 
         // $query = "SELECT ens.IdEns  , ens.Nom , ens.Email, ens.Password, ens.Matiere  FROM `enseignants`ens, `matieres` m   WHERE ens.matiere= m.IdMat ORDER BY IdEns ASC";
-
 
         $query = "SELECT * FROM enseignants ORDER BY IdEns ASC";
         $newobj = new DataBase();

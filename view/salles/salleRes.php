@@ -35,7 +35,7 @@
   <div class="col-md-8 m-sm-4 ">
     <div class="d-flex justify-content-between">
       <h1 class="font-weight-bold">
-        List des cours
+        Reservez votre salle
       </h1>
       <div class="col-md-2">
           <form action="http://localhost/gestion-emplois/loginCont/logout" method="post">
@@ -68,7 +68,7 @@
       <div class="col-md-1">
       </div>
           
-      <input type="date" name="date" id="date"  class="form-control">
+      <input type="date" min="<?=  date("Y/m/d") ?>" name="date" id="date"  class="form-control">
 
       <div class="col-md-1">
       </div>
@@ -94,7 +94,10 @@
 
   <table class="table caption-top">
     
-    <caption>les cours reservé</caption>
+    <caption class="sRes_tit">les salles reservé  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+          </svg>
+    </caption>
     
     <thead>
       <tr>
@@ -123,7 +126,7 @@
         <td> 
         <form action="http://localhost/gestion-emplois/ReservationCont/delete" method="post">
           <input type="hidden" name="IdCours" value="<?= $cour ['IdCours']  ?>">
-          <button type="submit" class="btn btn-danger" name="delete">Delete</button>
+          <button type="submit" class="btn btn-danger" name="delete">Annuler</button>
         </form>
         </td>
       </tr>

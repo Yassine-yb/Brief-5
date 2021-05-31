@@ -15,23 +15,21 @@ class LoginCont{
 
         if(isset($_POST['login'])){
 
-            // $username = $_POST['username'];
-            // $password = $_POST['password'];
             $obj= new loginMod();
 		    $result = $obj -> select( $_POST['username'], $_POST['password'] );
+            
 
-            // die(print_r($result));
-
-            if(empty($result)) {
+            if($result == null) {
                 
                 header("location:http://localhost/gestion-emplois/");
 
             } else {
 
                 session_start();
-                $username = $_SESSION['username']=$result[0]['username'];
-                $role = $_SESSION['Role']=$result[0]['Role'];
-    
+                $_SESSION['username']=$result[0]['username'];
+                $role =  $_SESSION['Role']=$result[0]['Role'];
+                
+                
                 if ($role != "Admin") {        
                     header("location:http://localhost/gestion-emplois/ReservationCont/index");
                 } else {
@@ -49,7 +47,7 @@ class LoginCont{
         if(isset($_POST['logout'])){
 
             $obj= new loginMod();
-		    $result = $obj -> logout($username, $password);
+		    $result = $obj -> logout();
 
             header("location:http://localhost/gestion-emplois/loginCont/index ");
         }

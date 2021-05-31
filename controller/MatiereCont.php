@@ -9,6 +9,11 @@ class MatiereCont
 
 	function matiere(){
 
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
+
 		$obj= new matieres();
 		$result = $obj-> select();
 		
@@ -19,6 +24,11 @@ class MatiereCont
 
 
 	function Ajout(){
+
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 		
 		if (isset ($_POST ['submit'])){
 
@@ -34,6 +44,11 @@ class MatiereCont
 
 	function delete(){
 
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
+
 		if (isset ($_POST ['submit'])){
 			
 			$IdMat=$_POST ['IdMat'];
@@ -45,6 +60,11 @@ class MatiereCont
 	}
 
 	function update(){
+
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 
 	
 		if (isset($_POST ['update'])){

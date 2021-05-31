@@ -78,6 +78,7 @@ a {
 
 #ges_img{
     width: 60vw;
+    margin-left: -2vw;
 }
 
 /*=============================================================*/
@@ -177,4 +178,8 @@ a {
 
 #ens_img{
     height: 70vh;
+}
+
+.sRes_tit{
+    font-weight: bold;
 }

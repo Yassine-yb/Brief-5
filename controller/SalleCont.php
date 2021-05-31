@@ -9,6 +9,11 @@ class SalleCont
 
 	function salle(){
 
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
+
 		$obj= new salles();
 		$result = $obj -> select();
 		require_once __DIR__.'/../view/salles/salle.php';
@@ -16,6 +21,11 @@ class SalleCont
 
 
 	function Ajout(){
+
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 		
 		$i = 0;
 		if (isset ($_POST ['submit'])){
@@ -38,6 +48,12 @@ class SalleCont
 
 	function delete(){
 
+
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
+
 		if (isset ($_POST ['submit'])){
 			
 			$IdSalle=$_POST ['IdSalle'];
@@ -49,6 +65,11 @@ class SalleCont
 	}
 
 	function update(){
+
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 
 	
 		if (isset($_POST ['update'])){

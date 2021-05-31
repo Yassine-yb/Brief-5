@@ -9,19 +9,18 @@ class signupCont{
 
 
     function index(){
-		
+
 		$obj= new signups();
 		$obj= new matieres();
 		$result = $obj -> select();
-        require_once __DIR__.'/../view/Signup.php';
-
-		
+        require_once __DIR__.'/../view/Signup.php';	
 
     }
 
         
 
     function Ajout(){
+
 
 		if (isset($_POST['Username']) ){
 

@@ -6,7 +6,13 @@ require __DIR__.'/../model/enseignants.php';
 
 class EnseignantCont{
 
+	
 	function enseignant(){
+
+		session_start();
+			if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 
 		$obj= new enseignants();
 		$result = $obj -> select();
@@ -17,6 +23,11 @@ class EnseignantCont{
 
 
 	function Ajout(){
+
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 		
 		if (isset ($_POST ['submit'])){
 
@@ -37,6 +48,11 @@ class EnseignantCont{
 
 	function delete(){
 
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
+
 		if (isset ($_POST ['submit'])){
 			
 			$IdEns=$_POST ['IdEns'];
@@ -50,6 +66,11 @@ class EnseignantCont{
 	}
 
 	function update(){
+
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 
 	
 		if (isset ($_POST ['update'])){

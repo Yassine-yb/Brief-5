@@ -9,6 +9,11 @@ class GroupeCont
 
 	function groupe(){
 
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
+
 		$obj= new groupes();
 		$result = $obj -> select();
 		require_once __DIR__.'/../view/groupes/groupe.php';
@@ -16,6 +21,11 @@ class GroupeCont
 
 
 	function Ajout(){
+
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 		
 		if (isset ($_POST ['submit'])){
 
@@ -31,6 +41,11 @@ class GroupeCont
 
 	function delete(){
 
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
+
 		if (isset ($_POST ['submit'])){
 			
 			$IdGrp=$_POST ['IdGrp'];
@@ -42,6 +57,11 @@ class GroupeCont
 	}
 
 	function update(){
+
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 
 	
 		if (isset($_POST ['update'])){

@@ -5,53 +5,92 @@ include_once __DIR__ . '/../model/reservations.php';
 class ReservationCont
 {
 
-	function index()
-	{
-		$obj = new Reservations();
-		// $salles = $obj->selectsalle();
-		// $cours= $obj-> getCours();
+
+	function index(){
 		
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
+
+		$obj = new Reservations();
 		require __DIR__ . "/../view/reservation.php";
 	}
 
 
 	function reservation()
 	{
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 
 		$obj = new Reservations();
 		$salles = $obj->selectsalle();
-		$cours= $obj-> getCours();
-
+		$cours = $obj->getCours();
 		require_once __DIR__ . '/../view/salles/salleRes.php';
 	}
-	
+
 	function Ajout()
 	{
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
+
 		if (isset($_POST['submit'])) {
 
-			$date = $_POST['date'];
-			$capacite = $_POST['capacite'];
-			$heure = $_POST['heure'];
-			$salle = $_POST['salle'];
+			if((isset($_POST['date']) && isset($_POST['capacite']) && isset($_POST['heure']) && isset($_POST['salle']))   ){
 
-			$obj = new Reservations();
+				$date = $_POST['date'];
+				$capacite = $_POST['capacite'];
+				$heure = $_POST['heure'];
+				$salle = $_POST['salle'];
 
 
-			$result = $obj-> Ajout($date, $capacite, $heure, $salle);
+				$obj = new Reservations();
+				$result=null;
 
-			header("location:http://localhost/gestion-emplois/ReservationCont/reservation");
+				if(!(empty($date) || empty($capacite) || empty($heure) || empty($salle)) || !($date <  date("d-m-y")) ) {
+
+					$result = $obj->Ajout($date, $capacite, $heure, $salle);
+
+				}
+				
+			
+			
+				if ($result) {
+					$message = "Reservation effectué";
+				} else {
+					$message = "Salle déja reservé";
+					
+				}
+				echo "<script>alert('$message')</script>";
+				header("location:http://localhost/gestion-emplois/ReservationCont/reservation");
+			}
+				
+			else{
+				echo "<script>alert('Entrez vos données')</script>";
+				header("location:http://localhost/gestion-emplois/ReservationCont/reservation");
+			}
 		}
+		
 	}
 
-	function delete(){
+	function delete()
+	{
+		session_start();
+		if(!isset($_SESSION["username"])){
+			header("location:http://localhost/gestion-emplois/");
+		}
 
-		if (isset ($_POST ['delete'])){
-			
-			$IdCours=$_POST ['IdCours'];
+		if (isset($_POST['delete'])) {
 
-			$obj= new Reservations();
-			$result = $obj -> delete ($IdCours);
-			header ("location:http://localhost/gestion-emplois/ReservationCont/reservation");
+			$IdCours = $_POST['IdCours'];
+
+			$obj = new Reservations();
+			$result = $obj->delete($IdCours);
+			header("location:http://localhost/gestion-emplois/ReservationCont/reservation");
 		}
 	}
 }
